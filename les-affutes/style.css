@@ -1,0 +1,93 @@
+/* page index */
+
+/* Globale */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+img{
+    width: 70px;
+}
+
+
+/* menu */
+.sidebar{
+position: fixed;
+left: 2vh; top: 0; bottom: 0;
+min-width: 200px;
+height: 100vh;
+
+}
+
+
+.box{
+    display: block;
+    height: 20vh;
+    border-radius: 15px;
+    margin-top: 10px;
+    text-align: center;
+
+    
+}
+.box1{
+    display: block;
+    height: 5vh;
+    border-radius: 15px;
+}
+.c1{
+    background-color: rgb(231, 231, 231);
+    margin-top: 10px;
+}
+.container{
+    margin-left: 240px;
+}
+
+.menu-vertical img{
+    object-fit: contain;
+    
+}
+
+/* acceuil */ 
+.acceuil{
+    height: 95vh;
+    display: flex;
+    background-color: rgb(231, 231, 231);
+    border-radius: 15px;
+    margin-top: 2vh;
+    margin-right: 2vh;
+}
+.univers{
+    height: 95vh;
+    /*background-color: rgb(231, 231, 231);*/
+
+    border-radius: 15px;
+    margin-top: 2vh;
+    
+}
+.titre{
+    height: 10vh;
+    background-color: rgb(231, 231, 231);
+
+    border-radius: 70px;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+.atelier{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60vh;
+}
+.atelier-aiguilles{
+    width: 300px;
+    
+    background-color: rgb(231, 231, 231);
+    
+}
+.atelier-aiguilles img{
+    width: 100%;
+}
