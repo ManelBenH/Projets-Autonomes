@@ -12,11 +12,41 @@ a{
     font-weight: 600;
     font-style: normal;
     color: black;
+    
+}
+
+h1{
+    font-family: "Oi", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
 
 }
-img{
-    width: 70px;
+h2{
+    font-family: "Poppins", serif;
+    font-size: 50px ;
+    font-weight: 800;
+    font-style: normal;  
 }
+
+h3{
+    font-family: "Poppins", serif;
+    font-size: 20px ;
+    font-weight: 800;
+    font-style: normal;  
+}
+
+p{
+    font-family: "Poppins", serif;
+    font-size: 20px;
+    font-weight: 200;
+    font-style: normal;  
+    margin-top: 15px;
+}
+
+/* img{
+    width: 70px;
+} */
 
 
 /* menu */
@@ -96,38 +126,41 @@ height: 100vh;
 
 }
 
-h1{
-    font-family: "Oi", serif;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
 
-}
+/* ------------------------------------
+-----------section atelier ------------
+--------------------------------------*/
+
 
 .section-atelier{
-    height: 95vh;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 2vh;
-
+    
     grid-auto-rows: 15vh;
     margin-top: 2vh;
     margin-right: 2vh;
 }
+
 .atelier{
     background-color: rgb(231, 231, 231);
     border-radius: 15px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    
 }
 .titre{
+    text-align: center;
     grid-column: 1 / span 4;
-
-
+    
+    
 }
 .aiguilles-image{
     grid-column: 1 / span 1;
     grid-row: 2 / span 2;
-
+    
     
 }
 .aiguilles-description{
@@ -137,7 +170,7 @@ h1{
 .artdeco-image{
     grid-column: 2 / span 1;
     grid-row: 2 / span 2;
- 
+    
     
 }
 .artdeco-description{
@@ -171,110 +204,200 @@ h1{
 }
 
 .artdeco-image img{
-    min-width: 60%;
+    min-width: 50%;
 }
 .artdeco-image, .aiguilles-image, .couture-image, .cuisine-image{
     overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-
+    
 }
-/* section passeport*/
+/* ------------------------------------
+-----------section passeport------------
+--------------------------------------*/
 
 .section-passeports{
-    height: 95vh;
+    /* height: 95vh; */
     background-color: rgb(231, 231, 231);
     border-radius: 15px;
     margin-top: 2vh;
     margin-right: 2vh;
-    display:flex ;
-    
-}
-.passeport-image{
-    text-align: center;
-    min-width: 40%; 
-    background-color: antiquewhite;
+    padding: 120px;
+    display: flex;
 }
 
-.passeport-image img{
-    min-width: 25%;
-    margin: 10px;
+.passeport-description{
+    flex: 1;
+    margin: 50px;
 }
 
 
-/* section-a propos*/
-
-.section-apropos{
-    height: 95vh;
-    background-color: rgb(231, 231, 231);
-    border-radius: 15px;
-    margin-top: 2vh;
-    margin-right: 2vh; 
-    text-align: center;
-}
-
-.apropos-image{
-    min-width: 70%;
-
-}
-
-/* section inscription*/
-
-.section-inscription{
-   height: 40vh;
-    background-color: rgb(231, 231, 231);
-    border-radius: 15px;
-    margin-top: 2vh;
-    margin-right: 2vh; 
+.passeport-image-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    flex: 1;
     
 }
-.formulaire{
 
+.passeport-image-container1 {
+    display: flex;
+    flex-direction: row;
 }
 
-.formulaire button{
-    text-decoration: none;
-    border: 0;
-    padding: 10px 15px;
-    font-size: 1rem;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    background-color: #565656;
-
-}
-.formulaire input{
-  padding: 10px 15px;
-  font-size: 1rem;
-  border: 1px solid #565656 ;
-  border-radius: 10px; 
-  margin-top: 2vh;
+.passeport-image-container2 {
+    display: flex;
+    flex-direction: row;
 }
 
-/* footer */
-footer{
-    height: 40vh;
+.passeport-image {
+    width: 230px;
+    height: 281.34px;
+}
+
+
+.passeport-cassecou {
+    z-index: 5;
+    transform: translateX(-30px) rotate(5deg);
+    transition: transform 0.6s ease;
+}
+.passeport-repartout{
+    z-index: 6;
+    transition: transform 0.6s ease;
+    transform: translateY(10px) rotate(1deg);
+}
+.passeport-touchatout{
+    z-index: 7; 
+    transform: translateX(20px) rotate(-5deg);
+    transition: transform 0.6s ease;
+}
+.passeport-couture{
+    z-index: 8;
+    transform: translateX(50px) rotate(5deg);
+    transition: transform 0.6s ease;
+}
+.passeport-cuisine{
+    z-index: 9;
+    transform: translateY(-20px) rotate(-3deg);
+    transition: transform 0.6s ease;
+}
+.passeport-Bois{
+    z-index: 10;
+    transform: translateX(-30px) rotate(-5deg);
+    transition: transform 0.6s ease;
+}
+.passeport-image-container:hover .passeport-cassecou {
+    transform: translateX(0px) rotate(5deg);
+}
+.passeport-image-container:hover .passeport-repartout {
+    transform: translateX(0px) rotate(1deg);
+}
+.passeport-image-container:hover .passeport-touchatout {
+    transform: translateX(0px) rotate(-5deg);
+}
+.passeport-image-container:hover .passeport-couture{
+    transform: translateX(0px) rotate(5deg);
+} 
+.passeport-image-container:hover .passeport-cuisine{
+    transform: translateY(0px) rotate(-3deg);
+}
+.passeport-image-container:hover .passeport-Bois{
+    transform: translateX(0px) rotate(-5deg);
+
+}
+/* ------------------------------------
+----------- section a propos------------
+--------------------------------------*/
+
+    
+.section-apropos{
+    /* height: 95vh; */
+    background-color: rgb(231, 231, 231);
+    border-radius: 15px;
     margin-top: 2vh;
     margin-right: 2vh; 
+    text-align: center;
+}
     
+.apropos-image{
+    max-width: 60vw;
 }
-.section-footer{
-    display: flex;
-justify-content: space-around;
-    margin-top: 5vh;
 
-}
-.section-footer img{
-    width: 200px;
-
-}
-footer span{
+.apropos-description{
     display: flex;
-    justify-content:end ;
-    margin-top: 10vh;
+    flex-direction: column;
+    padding-bottom: 100px;
 }
+
+.apropos-description P{
+    padding: 0 100px ;
+}
+
+/* ------------------------------------
+---------- section a inscription----------
+--------------------------------------*/
+    
+    
+    .section-inscription{
+        height: 40vh;
+        background-color: rgb(231, 231, 231);
+        border-radius: 15px;
+        margin-top: 2vh;
+        margin-right: 2vh; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    .formulaire button{
+        text-decoration: none;
+        border: 0;
+        padding: 10px 15px;
+        font-size: 1rem;
+        text-align: center;
+        color: white;
+        border-radius: 10px;
+        background-color: #565656;
+        
+    }
+    .formulaire input{
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: 1px solid #565656 ;
+        border-radius: 10px; 
+        margin-top: 2vh;
+    }
+    
+   /* ------------------------------------
+---------- section footer ----------------
+--------------------------------------*/
+    footer{
+        margin-top: 2vh;
+        margin-right: 2vh;
+        background-color: rgb(231, 231, 231);
+        border-radius: 15px 15px 0px 0px ;
+        
+    }
+    footer h2{
+        padding: 110px;
+    }
+    .section-footer{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5vh;
+        
+    }
+    .section-footer img{
+        width: 200px;
+        
+    }
+    footer span{
+        display: flex;
+        justify-content:end ;
+        margin-top: 10vh;
+        padding-bottom: 10px;
+        font-family: "Poppins", sans-serif;
+    }
