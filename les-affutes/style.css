@@ -8,6 +8,11 @@
 
 a{
     text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: black;
+
 }
 img{
     width: 70px;
@@ -23,13 +28,33 @@ height: 100vh;
 
 }
 
+.logo{
+    display: block;
+    height: 5vh;
+    border-radius: 15px;
+    margin-top: 10px;
+    line-height: 5vh;
+    
+
+
+    text-align: center; 
+    background-color: rgb(231, 231, 231);
+
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    font-style: normal;
+
+}
 
 .box{
     display: block;
     height: 20vh;
+
     border-radius: 15px;
     margin-top: 10px;
     text-align: center;
+    line-height: 20vh;
 
     
 }
@@ -37,6 +62,8 @@ height: 100vh;
     display: block;
     height: 5vh;
     border-radius: 15px;
+    text-align: center;
+    line-height: 5vh;
 }
 .c1{
     background-color: rgb(231, 231, 231);
@@ -54,40 +81,200 @@ height: 100vh;
 /* acceuil */ 
 .acceuil{
     height: 95vh;
+    border-radius: 15px;
+    margin-top: 2vh;
+    margin-right: 2vh;
+    
     display: flex;
+    align-items: center;
+
+    
+    background-image: url(/Projets-Autonomes/les-affutes/image/allison-saeng-f8cmxt24mrM-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+
+}
+
+h1{
+    font-family: "Oi", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+
+}
+
+.section-atelier{
+    height: 95vh;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2vh;
+
+    grid-auto-rows: 15vh;
+    margin-top: 2vh;
+    margin-right: 2vh;
+}
+.atelier{
+    background-color: rgb(231, 231, 231);
+    border-radius: 15px;
+
+}
+.titre{
+    grid-column: 1 / span 4;
+
+
+}
+.aiguilles-image{
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 2;
+
+    
+}
+.aiguilles-description{
+    grid-column: 1 / span 1;
+    
+}
+.artdeco-image{
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 2;
+ 
+    
+}
+.artdeco-description{
+    grid-column: 2 / span 1;
+    
+}
+
+.couture-image{
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 2;
+    
+    
+}
+.couture-description{
+    grid-column: 3 / span 1;
+    
+}
+.cuisine-image{
+    grid-column: 4 / span 1;
+    grid-row: 2 / span 2;
+    
+}
+.cuisine-description{
+    grid-column: 4 / span 1;
+    
+}
+.aiguilles-image img, .artdeco-image img, .couture-image img, .cuisine-image img{
+    min-width: 70%;
+    object-fit: cover;
+    
+}
+
+.artdeco-image img{
+    min-width: 60%;
+}
+.artdeco-image, .aiguilles-image, .couture-image, .cuisine-image{
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+/* section passeport*/
+
+.section-passeports{
+    height: 95vh;
     background-color: rgb(231, 231, 231);
     border-radius: 15px;
     margin-top: 2vh;
     margin-right: 2vh;
+    display:flex ;
+    
 }
-.univers{
-    height: 95vh;
-    /*background-color: rgb(231, 231, 231);*/
+.passeport-image{
+    text-align: center;
+    min-width: 40%; 
+    background-color: antiquewhite;
+}
 
+.passeport-image img{
+    min-width: 25%;
+    margin: 10px;
+}
+
+
+/* section-a propos*/
+
+.section-apropos{
+    height: 95vh;
+    background-color: rgb(231, 231, 231);
     border-radius: 15px;
     margin-top: 2vh;
-    
-}
-.titre{
-    height: 10vh;
-    background-color: rgb(231, 231, 231);
-
-    border-radius: 70px;
+    margin-right: 2vh; 
     text-align: center;
-    margin-bottom: 2vh;
 }
-.atelier{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 60vh;
+
+.apropos-image{
+    min-width: 70%;
+
 }
-.atelier-aiguilles{
-    width: 300px;
-    
+
+/* section inscription*/
+
+.section-inscription{
+   height: 40vh;
     background-color: rgb(231, 231, 231);
+    border-radius: 15px;
+    margin-top: 2vh;
+    margin-right: 2vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
 }
-.atelier-aiguilles img{
-    width: 100%;
+.formulaire{
+
+}
+
+.formulaire button{
+    text-decoration: none;
+    border: 0;
+    padding: 10px 15px;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #565656;
+
+}
+.formulaire input{
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #565656 ;
+  border-radius: 10px; 
+  margin-top: 2vh;
+}
+
+/* footer */
+footer{
+    height: 40vh;
+    margin-top: 2vh;
+    margin-right: 2vh; 
+    
+}
+.section-footer{
+    display: flex;
+justify-content: space-around;
+    margin-top: 5vh;
+
+}
+.section-footer img{
+    width: 200px;
+
+}
+footer span{
+    display: flex;
+    justify-content:end ;
+    margin-top: 10vh;
 }
