@@ -30,63 +30,72 @@
     </aside>
 
     <div class="container">
-            <div class="acceuil">
-                <h1 >Le monde des <br>savoir-faire manuels</h1>
-                
-    
-
+        <div class="acceuil">
+            <h1 >Le monde des <br>savoir-faire manuels</h1>
+        </div>
+            
+        <div class="section-atelier">
+            <div class="atelier-titre">
+                <h2>Découvre nos univers</h2>
             </div>
+
             
+                <img src="/Projets-Autonomes/les-affutes/image/arrow-right.png" alt="" class="fleche-right">
+                <img src="/Projets-Autonomes/les-affutes/image/left-arrow.png" alt="" class="fleche-left">
 
-
-
-                
-                <div class="section-atelier">
-                    <div class="atelier titre">
-                        <h2>Découvre nos univers</h2>
+                <div class="carte-atelier">
+                                                    
+                    <div class="atelier">
+                        <div class="box-image">
+                            <img src="/Projets-Autonomes/les-affutes/image/tricot-300x300.png" alt="" class="aiguilles-image">
+                        </div>
+                        <div class="aiguilles-description">
+                            <h3>Aiguilles & textile</h3>
+                            <p>41 Ateliers</p>
+                        </div>
                     </div>
-                
-                    <div class="atelier aiguilles-image">
-                        <img src="/Projets-Autonomes/les-affutes/image/tricot-300x300.png" alt="">
+                            
+                    <div class="atelier">
+                        <div class="box-image">
+                            <img src="/Projets-Autonomes/les-affutes/image/vitrail-1-1-202x300.png" alt="" class="artdeco-image">
+                        </div>
+                                                        
+                        <div class="artdeco-description">
+                            <h3>Art décoratif</h3>
+                            <P>36 Ateliers</P>
+                        </div>
                     </div>
+                            
+                    <div class="atelier">
+                        <div class="box-image">
+                            <img src="/Projets-Autonomes/les-affutes/image/couture-carre-300x300.png" alt="" class="couture-image">
+                        </div>
 
-                    <div class=" atelier aiguilles-description">
-                        <h3>Aiguilles & textile</h3>
-                        <p>41 Ateliers</p>
-
-                    </div>
-                      
-                    <div class="atelier artdeco-image">
-                        <img src="/Projets-Autonomes/les-affutes/image/vitrail-1-1-202x300.png" alt="">
-                    </div>
-
-                    <div class="atelier artdeco-description">
-                        <h3>Art décoratif</h3>
-                        <P>36 Ateliers</P>
-
-                    </div>
-                    
-                    <div class="atelier couture-image" >
-                        <img src="/Projets-Autonomes/les-affutes/image/couture-carre-300x300.png" alt="">
+                        <div class="couture-description">
+                            <h3>Couture</h3>
+                            <P>36 Ateliers</P>
+                        </div>
                     </div> 
+                            
+                    <div class="atelier">
+                        <div class="box-image">
+                            <img src="/Projets-Autonomes/les-affutes/image/exe-illustrations-les-affutes-cuisine2-276x300.png" alt="" class="cuisine-image">
+                        </div>
                         
-                    <div class="atelier couture-description">
-                        <h3>Couture</h3>
-                        <P>36 Ateliers</P>
+                        <div class="cuisine-description">
+                            <h3>Cuisine</h3>
+                            <P>66 Ateliers</P>
+                        </div> 
                     </div>
 
-                    <div class="atelier cuisine-image">
-                        <img src="/Projets-Autonomes/les-affutes/image/exe-illustrations-les-affutes-cuisine2-276x300.png" alt="">
-                    </div>
-
-                    <div class="atelier cuisine-description">
-                        <h3>Cuisine</h3>
-                        <P>66 Ateliers</P>
-                    </div> 
-    
-                </div>
+                </div>      
 
             
+
+    
+        </div>
+
+          
 
 
             <div class="section-passeports">
@@ -114,9 +123,11 @@
     
                 </div>
 
-                    
-
+                
             </div>
+
+
+
             <div class="section-apropos">
                 <img class="apropos-image" src="/Projets-Autonomes/les-affutes/image/exe-les-affutes-a3-horizontal-couleurs-2048x1298.png" alt="">
                 <div class="apropos-description">
@@ -169,7 +180,29 @@
     </footer>
             
 
+<script>
+const slider = document.querySelector('.carte-atelier');
 
+const flecheDroite = document.querySelector('.fleche-right');
+const flecheGauche = document.querySelector('.fleche-left');
+
+const largeurCarte =
+document.querySelector('.atelier').offsetWidth + 24;
+
+flecheDroite.addEventListener('click', () => {
+slider.scrollBy({
+left: largeurCarte,
+behavior: 'smooth'
+});
+});
+
+flecheGauche.addEventListener('click', () => {
+slider.scrollBy({
+left: -largeurCarte,
+behavior: 'smooth'
+});
+});
+</script>
 
     
 </body>

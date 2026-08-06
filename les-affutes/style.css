@@ -43,6 +43,9 @@ p{
     font-style: normal;  
     margin-top: 15px;
 }
+body{
+
+}
 
 /* img{
     width: 70px;
@@ -100,7 +103,7 @@ height: 100vh;
     margin-top: 10px;
 }
 .container{
-    margin-left: 240px;
+    margin-left: 250px;
 }
 
 .menu-vertical img{
@@ -131,7 +134,7 @@ height: 100vh;
 -----------section atelier ------------
 --------------------------------------*/
 
-
+/* 
 .section-atelier{
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -140,9 +143,10 @@ height: 100vh;
     grid-auto-rows: 15vh;
     margin-top: 2vh;
     margin-right: 2vh;
-}
+} */
 
-.atelier{
+
+/* .atelier{
     background-color: rgb(231, 231, 231);
     border-radius: 15px;
     display: flex;
@@ -150,7 +154,8 @@ height: 100vh;
     justify-content: center;
     padding-left: 20px;
     
-}
+} */
+/*
 .titre{
     text-align: center;
     grid-column: 1 / span 4;
@@ -194,42 +199,118 @@ height: 100vh;
     
 }
 .cuisine-description{
-    grid-column: 4 / span 1;
-    
-}
-.aiguilles-image img, .artdeco-image img, .couture-image img, .cuisine-image img{
-    min-width: 70%;
-    object-fit: cover;
-    
+    grid-column: 4 / span 1; */
+.fleche-left, .fleche-right{
+   position:absolute;
+    width:60px;
+    cursor:pointer;
+    z-index:10;
+    opacity:.2
 }
 
-.artdeco-image img{
-    min-width: 50%;
+.fleche-left{
+transform:translateY(450px) translateX(30px);   
 }
-.artdeco-image, .aiguilles-image, .couture-image, .cuisine-image{
-    overflow:hidden;
+
+.fleche-right{
+transform:translateY(450px) translateX(1500px);   
+}
+.atelier-titre h2{
+    padding: 2vh;
+}
+.section-atelier{
+    padding-top: 2vh;
+}  
+.atelier-titre{
+    background-color:rgb(231,231,231);
+    border-radius:15px;
+}
+.carte-atelier{
+    display:flex;
+    gap:24px;
+    width:100%;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding-top:2vh;
+    scroll-behavior:smooth;
+}
+
+.carte-atelier::-webkit-scrollbar{
+display:none;
+}
+
+.carte-atelier{
+scrollbar-width:none;
+}
+
+
+.atelier{
+    /* min-height:75vh; */
+    display:flex;
+    flex-direction:column;
+    flex:0 0 40%;
+}
+.atelier img{
+    display: block;
+    width: 55%;
+    height: auto;
+    object-fit: contain;
+}
+
+.box-image{
+    background-color:rgb(231,231,231);
+    border-radius:15px;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    
+
+    height: clamp(400px, 50vw, 900px);
+
+     
 }
+.aiguilles-image, .artdeco-image, .couture-image, .cuisine-image{
+
+    max-width: 50%;
+    height: auto;
+    object-fit: contain;
+        
+}
+.aiguilles-description, .artdeco-description, .couture-description, .cuisine-description {
+    background-color:rgb(231,231,231);
+    border-radius:15px;
+    margin-top: 2vh;
+    padding: 2vh;
+}
+
+
+
 /* ------------------------------------
 -----------section passeport------------
 --------------------------------------*/
 
 .section-passeports{
-    /* height: 95vh; */
+    display: flex;
+    
+    resize: both;
+    overflow:hidden;
+
     background-color: rgb(231, 231, 231);
     border-radius: 15px;
     margin-top: 2vh;
     margin-right: 2vh;
-    padding: 120px;
-    display: flex;
+    padding: clamp(10px, 6vw, 120px);
+    /* flex-wrap:wrap; */
 }
 
 .passeport-description{
-    flex: 1;
-    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    margin: clamp(15px, 3vw, 40px);
+    justify-content: center;
+
 }
 
 
@@ -237,7 +318,9 @@ height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex: 1;
+
     
 }
 
@@ -252,8 +335,8 @@ height: 100vh;
 }
 
 .passeport-image {
-    width: 230px;
-    height: 281.34px;
+    width: clamp(100px, 15vw, 230px);
+    height: auto;
 }
 
 
