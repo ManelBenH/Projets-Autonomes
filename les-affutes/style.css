@@ -1,6 +1,18 @@
-/* page index */
+/* ==========================================================================
+   1. REGLES GLOBALES & TYPOGRAPHIE
+   ========================================================================== */
 
-/* Globale */
+   :root {
+  /* Palette de couleurs du menu */
+  --color-gris: #f5f1e5;      /* Gris clair */
+  --color-orange: #ff5e40;  /* Orange */
+  --color-bleu: #589cec;/* Bleu */
+  --color-vert: #42a44d;   /* Vert */
+  --color-jaune: #ffbd2e;   /* Jaune */
+  --color-rouge: #EE5253;  /* Rouge  */
+
+   }
+
 *{
     margin: 0;
     padding: 0;
@@ -15,23 +27,16 @@ a{
     
 }
 
-h1{
-    font-family: "Oi", serif;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
-
-}
 h2{
     font-family: "Poppins", serif;
-    font-size: 50px ;
+    font-size: 50px;
     font-weight: 800;
     font-style: normal;  
 }
 
 h3{
     font-family: "Poppins", serif;
-    font-size: 20px ;
+    font-size: 40px ;
     font-weight: 800;
     font-style: normal;  
 }
@@ -43,92 +48,103 @@ p{
     font-style: normal;  
     margin-top: 15px;
 }
-body{
-
-}
-
-/* img{
-    width: 70px;
-} */
 
 
-/* menu */
+/* ==========================================================================
+2. Barre de navigation latérale fixe
+========================================================================== */
+
+
+
 .sidebar{
-position: fixed;
-left: 2vh; top: 0; bottom: 0;
-min-width: 200px;
-height: 100vh;
+    position: fixed;
+    left: 2vh;
+    top: 2vh;
+    bottom: 2vh;
 
+    min-width: 10vw;
 }
 
-.logo{
-    display: block;
-    height: 5vh;
-    border-radius: 15px;
-    margin-top: 10px;
-    line-height: 5vh;
+.menu-vertical{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
     
-
-
-    text-align: center; 
-    background-color: rgb(231, 231, 231);
-
-    font-family: "Poppins", sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    font-style: normal;
-
 }
-
+.sidebar a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+.logo, .box1{
+    flex: 1;
+    
+}
 .box{
-    display: block;
-    height: 20vh;
+    flex: 3;
+}
 
-    border-radius: 15px;
-    margin-top: 10px;
-    text-align: center;
-    line-height: 20vh;
 
-    
-}
-.box1{
-    display: block;
-    height: 5vh;
-    border-radius: 15px;
-    text-align: center;
-    line-height: 5vh;
-}
-.c1{
-    background-color: rgb(231, 231, 231);
-    margin-top: 10px;
-}
+/* Conteneur principal décalé pour laisser la place à la sidebar */
 .container{
-    margin-left: 250px;
+    margin-left: 12vw;
 }
 
-.menu-vertical img{
-    object-fit: contain;
-    
+.jaune { background-color: var(--color-jaune); }
+.rouge { background-color: var(--color-rouge); }
+.vert { background-color: var(--color-vert); }
+.orange { background-color: var(--color-orange); }
+.bleu{ background-color: var(--color-bleu); }
+.gris { background-color: var(--color-gris); }
+
+/* ==========================================================================
+3. SECTION ACCUEIL (HERO)
+========================================================================== */
+h1{
+    font-family: "Oi", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    color: var(--color-orange);
+    font-size: 50px;
+
 }
 
-/* acceuil */ 
-.acceuil{
+.btn-atelier{
+    text-decoration: none;
+    border: 0;
+    padding: 10px 40px;
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+    border-radius: 40px;
+    background-color: var(--color-bleu);
+    font-family: "Poppins", serif;
+    margin-top: 50px;
+
+          
+}
+
+.accueil{
     height: 95vh;
     border-radius: 15px;
     margin-top: 2vh;
     margin-right: 2vh;
     
     display: flex;
+    flex-direction: column;
     align-items: center;
-
+    justify-content: center;
     
-    background-image: url(/Projets-Autonomes/les-affutes/image/allison-saeng-f8cmxt24mrM-unsplash.jpg);
+    
+    background-image: url(/Projets-Autonomes/les-affutes/image/10659095.jpg);
     background-repeat: no-repeat;
     background-size: cover;
- 
-
+    
+    
 }
-
 
 /* ------------------------------------
 -----------section atelier ------------
@@ -200,76 +216,90 @@ height: 100vh;
 }
 .cuisine-description{
     grid-column: 4 / span 1; */
+
+
+/* ==========================================================================
+   4. SECTION ATELIERS (CARROUSEL)
+   ========================================================================== */
+.section-atelier{
+    position: relative;
+    padding-top: 2vh;
+    margin-right: 2vh;
+}  
+
+.atelier-titre h2{
+
+    padding: 2vh;
+}
+
+.atelier-titre{
+    background-color: var(--color-jaune);
+    border-radius:15px;
+}
+
+/* Flèches du carrousel */   
 .fleche-left, .fleche-right{
-   position:absolute;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
     width:60px;
     cursor:pointer;
     z-index:10;
-    opacity:.2
+    opacity:0.2;
+    transition: opacity 0.3s ease;
 }
 
 .fleche-left{
-transform:translateY(450px) translateX(30px);   
+ 
+left: 4vh;
 }
 
 .fleche-right{
-transform:translateY(450px) translateX(1500px);   
+position: absolute;
+right: 4vh;
 }
-.atelier-titre h2{
-    padding: 2vh;
-}
-.section-atelier{
-    padding-top: 2vh;
-}  
-.atelier-titre{
-    background-color:rgb(231,231,231);
-    border-radius:15px;
-}
+
+/* Slider défilant */
+
 .carte-atelier{
     display:flex;
-    gap:24px;
+    gap:2vh;
     width:100%;
 
     overflow-x:auto;
     overflow-y:hidden;
-    padding-top:2vh;
+
+    padding: 2vh 0vh 2vh 0vh;
+
     scroll-behavior:smooth;
+    scrollbar-width: none; /* Cache la barre sous Firefox */
 }
 
 .carte-atelier::-webkit-scrollbar{
-display:none;
+display:none;/* Cache la barre sous Chrome/Safari */
 }
 
-.carte-atelier{
-scrollbar-width:none;
-}
-
+/* Cartes individuelles */
 
 .atelier{
     /* min-height:75vh; */
     display:flex;
     flex-direction:column;
-    flex:0 0 40%;
-}
-.atelier img{
-    display: block;
-    width: 55%;
-    height: auto;
-    object-fit: contain;
+    flex: 0 0 calc((100% - 2vh) / 2);
 }
 
 .box-image{
-    background-color:rgb(231,231,231);
+    background-color:var(--color-gris);
     border-radius:15px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    height: clamp(400px, 50vw, 900px);
-
-     
+    height: clamp(400px, 50vw, 900px);    
 }
+
 .aiguilles-image, .artdeco-image, .couture-image, .cuisine-image{
 
     max-width: 50%;
@@ -277,26 +307,41 @@ scrollbar-width:none;
     object-fit: contain;
         
 }
+
 .aiguilles-description, .artdeco-description, .couture-description, .cuisine-description {
-    background-color:rgb(231,231,231);
+
     border-radius:15px;
     margin-top: 2vh;
     padding: 2vh;
 }
 
+.aiguilles-description{
+background-color: var(--color-rouge);
+color:var(--color-gris);
+} 
+.artdeco-description{
+    background-color: var(--color-bleu);
+    color: var(--color-gris);
 
+} 
+.couture-description{
+    background-color: var(--color-orange);
+    color: var(--color-gris);
+} 
+.cuisine-description{
+    background-color: #42a44d;
+    color: var(--color-gris);
+}
 
-/* ------------------------------------
------------section passeport------------
---------------------------------------*/
+/* ==========================================================================
+   5. SECTION PASSEPORTS
+   ========================================================================== */
 
 .section-passeports{
     display: flex;
-    
-    resize: both;
     overflow:hidden;
 
-    background-color: rgb(231, 231, 231);
+    background-color: var(--color-gris);
     border-radius: 15px;
     margin-top: 2vh;
     margin-right: 2vh;
@@ -310,9 +355,8 @@ scrollbar-width:none;
     flex: 2;
     margin: clamp(15px, 3vw, 40px);
     justify-content: center;
-
+    color: var(--color-bleu);
 }
-
 
 .passeport-image-container {
     display: flex;
@@ -320,26 +364,20 @@ scrollbar-width:none;
     align-items: center;
     justify-content: center;
     flex: 1;
-
-    
 }
 
-.passeport-image-container1 {
+.passeport-image-container1, .passeport-image-container2 {
     display: flex;
     flex-direction: row;
 }
 
-.passeport-image-container2 {
-    display: flex;
-    flex-direction: row;
-}
 
 .passeport-image {
     width: clamp(100px, 15vw, 230px);
     height: auto;
 }
 
-
+/* Animations au survol des passeports */
 .passeport-cassecou {
     z-index: 5;
     transform: translateX(-30px) rotate(5deg);
@@ -389,14 +427,14 @@ scrollbar-width:none;
     transform: translateX(0px) rotate(-5deg);
 
 }
-/* ------------------------------------
------------ section a propos------------
---------------------------------------*/
 
-    
+/* ==========================================================================
+   6. SECTION À PROPOS
+   ========================================================================== */
+
 .section-apropos{
     /* height: 95vh; */
-    background-color: rgb(231, 231, 231);
+    background-color:var(--color-orange);
     border-radius: 15px;
     margin-top: 2vh;
     margin-right: 2vh; 
@@ -411,76 +449,92 @@ scrollbar-width:none;
     display: flex;
     flex-direction: column;
     padding-bottom: 100px;
+    color: var(--color-gris);
 }
 
 .apropos-description P{
     padding: 0 100px ;
 }
 
-/* ------------------------------------
----------- section a inscription----------
---------------------------------------*/
+/* ==========================================================================
+   7. SECTION INSCRIPTION (NEWSLETTER)
+   ========================================================================== */
+    
+ .section-inscription{
+    height: 40vh;
+    background-color: var(--color-gris);
+    border-radius: 15px;
+    margin-top: 2vh;
+    margin-right: 2vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+}
+.section-inscription h3{
+    color: var(--color-vert);
+}
+    
+.formulaire input{
+    padding: 10px 15px;
+    font-size: 2rem;
+    border: 1px solid var(--color-vert) ;
+    border-radius: 10px; 
+    margin-top: 2vh;
     
     
-    .section-inscription{
-        height: 40vh;
-        background-color: rgb(231, 231, 231);
-        border-radius: 15px;
-        margin-top: 2vh;
-        margin-right: 2vh; 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        
-    }
+}
+
+::placeholder{
+    font-family: "Poppins", serif;
+    font-size: 20px;
+    color: var(--color-vert);
+    opacity: .7;
+}
     
-    .formulaire button{
-        text-decoration: none;
-        border: 0;
-        padding: 10px 15px;
-        font-size: 1rem;
-        text-align: center;
-        color: white;
-        border-radius: 10px;
-        background-color: #565656;
+
+.formulaire button{
+    text-decoration: none;
+    border: 0;
+    padding: 10px 40px;
+    font-size: 2rem;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    background-color:var(--color-vert);
         
-    }
-    .formulaire input{
-        padding: 10px 15px;
-        font-size: 1rem;
-        border: 1px solid #565656 ;
-        border-radius: 10px; 
-        margin-top: 2vh;
-    }
+}
     
-   /* ------------------------------------
----------- section footer ----------------
---------------------------------------*/
-    footer{
-        margin-top: 2vh;
-        margin-right: 2vh;
-        background-color: rgb(231, 231, 231);
-        border-radius: 15px 15px 0px 0px ;
-        
-    }
-    footer h2{
-        padding: 110px;
-    }
-    .section-footer{
-        display: flex;
-        justify-content: space-around;
-        margin-top: 5vh;
-        
-    }
-    .section-footer img{
-        width: 200px;
-        
-    }
-    footer span{
-        display: flex;
-        justify-content:end ;
-        margin-top: 10vh;
-        padding-bottom: 10px;
-        font-family: "Poppins", sans-serif;
-    }
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
+footer{
+    margin-top: 2vh;
+    margin-right: 2vh;
+    background-color: var(--color-vert);
+    border-radius: 15px 15px 0px 0px ;    
+}
+
+footer h2{
+    color: var(--color-gris);
+    padding: 110px 0 0 110px;
+}
+
+.section-footer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5vh;
+    color: var(--color-gris);
+}
+
+.section-footer img{
+    width: 200px;
+}
+
+footer span{
+    display: flex;
+    justify-content:end ;
+    margin-top: 10vh;
+    padding-bottom: 10px;
+    font-family: "Poppins", sans-serif;
+}
