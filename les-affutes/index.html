@@ -19,8 +19,18 @@
 <body>
     <!-- Barre de navigation latérale fixe -->
     <aside class="sidebar">
+        <a href="#accueil" class="logo rouge">LES AFFÛTÉS</a>
+
+        <button class="burger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+
+        <!-- <BUtton class="menu-icon">☰</BUtton> -->
         <nav class="menu-vertical">
-            <a href="#accueil" class="box1 rouge">LES AFFÛTÉS</a>
             <a href="#atelier" class="box jaune" >ATELIERS</a>
             <a href="#passeports" class="box bleu">PASSEPORTS</a>
             <a href="#apropos" class="box orange">À PROPOS</a>
@@ -144,7 +154,7 @@
 
         <!-- Section Newsletter / Inscription -->
         <section id="contact" class="section-inscription">
-            <h3>Inscris-toi pour recevoir toutes les informations sur les ateliers et les drôles d’idées des Affûtés!</h3>
+            <h4>Inscris-toi pour recevoir toutes les informations sur les ateliers et les drôles d’idées des Affûtés!</h4>
                 
             <form class="formulaire">
                 <input type="text" placeholder="Email">
@@ -208,6 +218,19 @@
                 behavior: 'smooth'
             });
         });
+
+        const burger = document.querySelector('.burger-btn');
+        const menu = document.querySelector('.menu-vertical');
+
+        burger.addEventListener('click', () => {
+
+            menu.classList.toggle('open');
+            burger.textContent = menu.classList.contains('open')
+            ? '✕'
+            : '☰';
+
+        });
+        
 
     </script>
 

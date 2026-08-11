@@ -11,7 +11,9 @@
   --color-jaune: #ffbd2e;   /* Jaune */
   --color-rouge: #EE5253;  /* Rouge  */
 
+  --sidebar-width:clamp(140px, 10vw, 200px);
    }
+
 
 *{
     margin: 0;
@@ -29,21 +31,29 @@ a{
 
 h2{
     font-family: "Poppins", serif;
-    font-size: 50px;
+    font-size:  clamp(1rem, 2vw, 3rem);
     font-weight: 800;
-    font-style: normal;  
+    font-style: normal; 
+    white-space: nowrap;
 }
 
 h3{
     font-family: "Poppins", serif;
-    font-size: 40px ;
+    font-size: clamp(0.9rem, 2vw, 2rem);
+    white-space: nowrap;
+    font-weight: 800;
+    font-style: normal;  
+}
+h4{
+    font-family: "Poppins", serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.5rem);
     font-weight: 800;
     font-style: normal;  
 }
 
 p{
     font-family: "Poppins", serif;
-    font-size: 20px;
+    font-size: clamp(0.8rem, 1.5vw, 1.5rem);
     font-weight: 200;
     font-style: normal;  
     margin-top: 15px;
@@ -53,20 +63,17 @@ p{
 /* ==========================================================================
 2. Barre de navigation latérale fixe
 ========================================================================== */
-
-
-
 .sidebar{
     position: fixed;
     left: 2vh;
     top: 2vh;
     bottom: 2vh;
 
-    min-width: 10vw;
+    width:var(--sidebar-width);
 }
 
 .menu-vertical{
-    height: 100%;
+    height: 92%;
     display: flex;
     flex-direction: column;
     gap: 2vh;
@@ -85,11 +92,22 @@ p{
 .box{
     flex: 3;
 }
-
+.logo{
+height: 60px;   
+margin-bottom: 2vh;
+}
+.burger-btn{
+    display:none;
+    border:none;
+    background:none;
+    color:white;
+    font-size:2rem;
+    cursor:pointer;
+}
 
 /* Conteneur principal décalé pour laisser la place à la sidebar */
 .container{
-    margin-left: 12vw;
+    margin-left:calc(var(--sidebar-width) + 4vh);
 }
 
 .jaune { background-color: var(--color-jaune); }
@@ -98,6 +116,119 @@ p{
 .orange { background-color: var(--color-orange); }
 .bleu{ background-color: var(--color-bleu); }
 .gris { background-color: var(--color-gris); }
+
+
+
+/* Barre de navigation fixe - mobile */
+@media ( max-width :1550px){
+    
+    .sidebar{
+        position: fixed;
+
+        left: 2vh;
+        right: 2vh;
+        top: 2vh;
+
+        width: auto;
+        height: 60px;
+
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        z-index: 9999;
+    }
+    .sidebar a {
+        border-radius: 0 ;
+    }
+    
+    .menu-vertical{
+        position:fixed;
+        top:80px;
+        left:0;
+
+        width:100%;
+
+        display:flex;
+        flex-direction:column;
+
+        transform:translateY(-150%);
+        transition:0.4s ease;
+    }
+    .menu-vertical.open{
+
+        transform:translateY(0);
+    }
+    .box, .box1{
+        flex:none;
+        width:100%;
+        min-height: 12vh;
+        border-radius: 0;
+        
+    }
+    .logo{
+        flex: initial;
+        position: fixed;
+        height: 40px;
+        margin: 10px;
+        padding: 3px 13px;
+        z-index: 2000;
+        border-radius: 10px !important;
+        color: var(--color-gris);
+    }
+
+    .burger-btn{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 3000;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 5px; */
+
+    background-color: var(--color-rouge);
+    border: none;
+    border-radius: 10px;
+
+    color: var(--color-gris); /* AJOUTER */
+    font-size: 2rem; /* AJOUTER */
+    font-weight: bold; /* AJOUTER */
+
+    cursor: pointer;
+    }
+
+    .burger-btn span{
+    display: block;
+    width: 24px;
+    height: 4px;
+    border-radius: 10px;
+    margin: 2px 0;
+    
+
+    }
+
+        .menu-vertical.open{
+    transform: translateY(0);
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.1);
+}
+
+    .container{
+        margin-left: 2vh;
+        
+
+        
+    }
+
+}
+
 
 /* ==========================================================================
 3. SECTION ACCUEIL (HERO)
@@ -108,7 +239,7 @@ h1{
     font-style: normal;
     text-align: center;
     color: var(--color-orange);
-    font-size: 50px;
+    font-size: clamp(2rem, 4vw, 4rem);
 
 }
 
@@ -116,7 +247,7 @@ h1{
     text-decoration: none;
     border: 0;
     padding: 10px 40px;
-    font-size: 2rem;
+    font-size: clamp(1rem, 2vw, 2rem);
     text-align: center;
     color: white;
     border-radius: 40px;
@@ -141,82 +272,9 @@ h1{
     
     background-image: url(/Projets-Autonomes/les-affutes/image/10659095.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
-    
-    
-}
-
-/* ------------------------------------
------------section atelier ------------
---------------------------------------*/
-
-/* 
-.section-atelier{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 2vh;
-    
-    grid-auto-rows: 15vh;
-    margin-top: 2vh;
-    margin-right: 2vh;
-} */
-
-
-/* .atelier{
-    background-color: rgb(231, 231, 231);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 20px;
-    
-} */
-/*
-.titre{
-    text-align: center;
-    grid-column: 1 / span 4;
-    
+    background-size: cover;   
     
 }
-.aiguilles-image{
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 2;
-    
-    
-}
-.aiguilles-description{
-    grid-column: 1 / span 1;
-    
-}
-.artdeco-image{
-    grid-column: 2 / span 1;
-    grid-row: 2 / span 2;
-    
-    
-}
-.artdeco-description{
-    grid-column: 2 / span 1;
-    
-}
-
-.couture-image{
-    grid-column: 3 / span 1;
-    grid-row: 2 / span 2;
-    
-    
-}
-.couture-description{
-    grid-column: 3 / span 1;
-    
-}
-.cuisine-image{
-    grid-column: 4 / span 1;
-    grid-row: 2 / span 2;
-    
-}
-.cuisine-description{
-    grid-column: 4 / span 1; */
-
 
 /* ==========================================================================
    4. SECTION ATELIERS (CARROUSEL)
@@ -228,8 +286,7 @@ h1{
 }  
 
 .atelier-titre h2{
-
-    padding: 2vh;
+padding: 2vh;
 }
 
 .atelier-titre{
@@ -270,7 +327,7 @@ right: 4vh;
     overflow-x:auto;
     overflow-y:hidden;
 
-    padding: 2vh 0vh 2vh 0vh;
+    padding: 2vh 0vh;
 
     scroll-behavior:smooth;
     scrollbar-width: none; /* Cache la barre sous Firefox */
@@ -297,7 +354,7 @@ display:none;/* Cache la barre sous Chrome/Safari */
     justify-content:center;
     align-items:center;
 
-    height: clamp(400px, 50vw, 900px);    
+    height: clamp(180px, 50vw, 900px);    
 }
 
 .aiguilles-image, .artdeco-image, .couture-image, .cuisine-image{
@@ -313,26 +370,39 @@ display:none;/* Cache la barre sous Chrome/Safari */
     border-radius:15px;
     margin-top: 2vh;
     padding: 2vh;
+    color:var(--color-gris);
 }
 
 .aiguilles-description{
 background-color: var(--color-rouge);
-color:var(--color-gris);
 } 
 .artdeco-description{
     background-color: var(--color-bleu);
-    color: var(--color-gris);
+   
 
 } 
 .couture-description{
     background-color: var(--color-orange);
-    color: var(--color-gris);
+    
 } 
 .cuisine-description{
-    background-color: #42a44d;
-    color: var(--color-gris);
+    background-color: var(--color-vert);
+    
 }
 
+/* Section Carrousel des Ateliers - mobile */
+@media ( max-width :1550px){
+
+.fleche-left, .fleche-right{
+    display: none;
+}
+.carte-atelier{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+}
 /* ==========================================================================
    5. SECTION PASSEPORTS
    ========================================================================== */
@@ -428,12 +498,31 @@ color:var(--color-gris);
 
 }
 
+
+/* Section Section Passeports - mobile */
+@media ( max-width :1550px){
+    .section-passeports{
+        display: flex;
+        flex-direction: column;
+        padding-top: 15vw;
+   
+    }
+    .passeport-description {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 5vh;
+    
+    }
+    
+}
+
 /* ==========================================================================
    6. SECTION À PROPOS
    ========================================================================== */
 
 .section-apropos{
-    /* height: 95vh; */
     background-color:var(--color-orange);
     border-radius: 15px;
     margin-top: 2vh;
@@ -442,19 +531,21 @@ color:var(--color-gris);
 }
     
 .apropos-image{
-    max-width: 60vw;
+    max-width:clamp(200px, 90vw, 800px);;
 }
 
 .apropos-description{
     display: flex;
     flex-direction: column;
-    padding-bottom: 100px;
+    padding-bottom: 7vh;
     color: var(--color-gris);
 }
 
-.apropos-description P{
-    padding: 0 100px ;
+.apropos-description p{
+    padding: 0 5vh ;
 }
+
+
 
 /* ==========================================================================
    7. SECTION INSCRIPTION (NEWSLETTER)
@@ -471,23 +562,25 @@ color:var(--color-gris);
     justify-content: center;
     align-items: center;   
 }
-.section-inscription h3{
+.section-inscription h4{
     color: var(--color-vert);
+    margin-bottom: 2vh;
+    text-align: center;
 }
     
 .formulaire input{
     padding: 10px 15px;
-    font-size: 2rem;
+    font-size: clamp(10px, 2vw, 20px);
     border: 1px solid var(--color-vert) ;
     border-radius: 10px; 
-    margin-top: 2vh;
+    margin-bottom: 1vh;
     
     
 }
 
 ::placeholder{
     font-family: "Poppins", serif;
-    font-size: 20px;
+    font-size: clamp(10px, 2vw, 20px);
     color: var(--color-vert);
     opacity: .7;
 }
@@ -497,12 +590,28 @@ color:var(--color-gris);
     text-decoration: none;
     border: 0;
     padding: 10px 40px;
-    font-size: 2rem;
+    font-size: clamp(10px, 1vw, 20px);
     text-align: center;
     color: white;
     border-radius: 10px;
     background-color:var(--color-vert);
         
+}
+
+/* Section Newsletter / Inscription  - mobile */
+@media ( max-width :1550px){
+    .section-inscription{
+        padding: 5vh;
+    }
+    .section-inscription h3{
+        width: 70%;
+        text-align: center;
+    }
+    .formulaire{
+        display: flex;
+        flex-direction: column;
+    }
+
 }
     
 /* ==========================================================================
@@ -533,8 +642,27 @@ footer h2{
 
 footer span{
     display: flex;
-    justify-content:end ;
+    justify-content:center ;
     margin-top: 10vh;
     padding-bottom: 10px;
     font-family: "Poppins", sans-serif;
+    font-size: clamp(10px, 1vw, 20px); 
+}
+
+/* Pied de page  - mobile */
+footer{
+    padding: 5vh;
+}
+footer h2{
+    padding: 0;
+    text-align: center;
+}
+
+@media ( max-width :1550px){
+    .section-footer{
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+        align-items: center;
+    }
 }
