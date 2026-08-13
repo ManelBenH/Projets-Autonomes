@@ -2,6 +2,11 @@
     REGLES GLOBALES 
    ========================================================================== */
 :root{
+    --bg-color:#e1cfcf;
+    --blob-1:#b9cfea;
+    --blob-2:#dfb0d5;
+    --blob-3:#b2dac5;
+    --blob-opacity:0.5;
 
 }
 
@@ -14,10 +19,10 @@ a{
     font-family: "Montserrat", sans-serif;
 }
 h1{
-    font-family: "The Nautigal", cursive;
+    font-family: "Birthstone Bounce", cursive;
     font-weight: 400;
     font-style: normal;
-    font-size: 150px;
+    font-size: 100px;
 }
 p{
     font-family: "Montserrat", sans-serif;
@@ -30,8 +35,68 @@ button{
     border: none;
     border-radius: 5px;
     font-family: "Montserrat", sans-serif;
+}
 
+body{
+    min-width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
 
+}
+
+.bg-mesh{
+    position:fixed;
+    inset:0;
+    background:var(--bg-color);
+    overflow:hidden;
+    z-index: -1;
+}
+
+.blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(150px);
+    opacity:var(--blob-opacity);
+    animation:float 20s infinite alternate ease-in-out;
+}
+.blob-1{
+    width:50vw;
+    height:50vw;
+    top:-10%;
+    left:-10%;
+    background:var(--blob-1);
+}
+
+.blob-2{
+    width:45vw;
+    height:45vw;
+    bottom:-10%;
+    right:-10%;
+    background:var(--blob-2);
+    animation-delay:-5s;
+}
+.blob-3{
+    width:35vw;
+    height:35vw;
+    top:30%;
+    left:40%;
+    background:var(--blob-3);
+    animation-delay:-10s;
+}
+
+@keyframes float{
+    0%{
+        transform:translate(0,0) scale(1);
+    }
+    33%{
+        transform:translate(5%,10%) scale(1.05);
+    }
+    66%{
+        transform:translate(-5%,5%) scale(0.95);
+    }
+    100%{
+        transform:translate(0,-10%) scale(1.1);
+}
 }
 
 /* ==========================================================================
@@ -54,7 +119,7 @@ nav{
     justify-content: center;
     align-items: center;
     gap: 2vh;
-    height: 85vh;
+    /* height: 85vh; */
 
 }
 
@@ -62,4 +127,30 @@ input{
     width: 300px;
     height: 5px;
     padding: 5px 15px;
+    
+}
+
+.books-container{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+.sciencefiction-books{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.science-books-container{
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.book-card{
+    width: 30vh;
 }

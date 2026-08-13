@@ -8,12 +8,18 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Birthstone+Bounce:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
     <header>
+        <div class="bg-mesh">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
         <a  href="" class="logo">Bibliothéque numérique</a>
         <nav>
             <a href="">Livres</a>
@@ -32,21 +38,39 @@
 
         </section>
         
-        <section>
-            <h2>Les plus consultés</h2>
+         <section class="popular-books">
+            <h2>Livres populaires</h2>
+
+            <div id="popular-books-container" class="books-container"></div>
+
             <button>voir tous les livres</button>
 
         </section>
 
-        <section>
+        <section class="sciencefiction-books">
+            <h2>Nouveautés Science-Fiction 2026</h2>
+
+            <div id="science-books-container" class="books-container"></div>
+
+            <button>voir tous les livres</button>
+
+        </section>
+
+        <section class="genre">
             <h2>Parcourir par genre</h2>
+            <a href="">Art</a>
+            <a href="">Biographie</a>
+            <a href="">Fiction</a>
+            <a href="">Jeunesse</a>
+            <a href="">Éducation</a>
+            <a href="">Manga</a>
+            <a href="">Bande dessinée</a>
+            <a href="">Histoire</a>
 
 
         </section>
-        
-
 
     </main>
-    
+    <script src="app.js" defer></script>
 </body>
 </html>
