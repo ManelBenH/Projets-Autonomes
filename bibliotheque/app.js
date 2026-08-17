@@ -1,57 +1,62 @@
-
-
-const container = document.getElementById("science-books-container");
-
-async function loadBooks() {
-    const response = await fetch("https://openlibrary.org/search.json?subject=science_fiction&sort=new&limit=10");
-    const data = await response.json();
-    console.log(data);
-    const books = data.docs .filter(book => book.cover_i) .slice(0, 3);
-
-    books.forEach(book => {
-
-        const cover = book.cover_i
-    ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-    : "https://via.placeholder.com/150x220";
-
-    scienceContainer.innerHTML += `
-        <div class="book-card">
-            <img src="${cover}"> 
-            <h3>${book.title}</h3>
-            <p>${book.author_name?.[0] || "Auteur inconnu"}</p>
-            <span>${book.first_publish_year || "Date inconnue"}</span>
-        </div>
-`;
-    });
-}
-
-
-
-
-const scienceContainer = document.getElementById("science-books-container");
+const popularContainer = document.getElementById("popular-books-container");
 const API_KEY = "AIzaSyC7Jq2kBk1urVVnXkIdIeqr-KSHuuoaY8c";
 
 async function loadPopularBooks() {
+    try {
+        const response = await fetch(
+            `https://www.googleapis.com/books/v1/volumes?q=bestseller&maxResults=8&key=${API_KEY}`
+        );
+        const data = await response.json();
 
-    const response = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=bestseller&maxResults=5&key=${API_KEY}`);
+        popularContainer.innerHTML = "";
 
-    const data = await response.json();
+        if (!data.items) {
+            popularContainer.innerHTML = "<p>Aucun livre trouvé.</p>";
+            return;
+        }
 
-    data.items.forEach(book => {
+        // On prend 6 livres au total
+        const books = data.items.slice(0, 6);
 
-        const info = book.volumeInfo;
+        // On sépare en 2 groupes de 3 livres
+        const row1 = books.slice(0, 3);
+        const row2 = books.slice(3, 6);
 
-        popularContainer.innerHTML += `
-        <div class="book-card">
-        ${info.imageLinks?.thumbnail || ''}
-        <h3>${info.title}</h3>
-        <p>${info.authors?.[0] || "Auteur inconnu"}</p>
-        </div>
-        `;
-    });
+        // Fonction pour générer le HTML d'une rangée
+        function generateRowHTML(bookGroup) {
+            let html = `<div class="shelf-row">`;
+            
+            bookGroup.forEach((book, index) => {
+                const info = book.volumeInfo;
+                let cover = info.imageLinks?.thumbnail || "https://via.placeholder.com/150x220?text=Pas+de+couverture";
+                cover = cover.replace("http://", "https://");
+
+                html += `
+                    <div class="book-card">
+                        <img src="${cover}" alt="${info.title}">
+                    </div>
+                `;
+
+                // Ajout des rectangles entre les livres
+                if (index < bookGroup.length - 1) {
+                    html += `
+                        <div class="spine-block spine-tall"></div>
+                        <div class="spine-block spine-short"></div>
+                    `;
+                }
+            });
+
+            html += `</div>`;
+            return html;
+        }
+
+        // Injection des 2 rangées dans la page
+        popularContainer.innerHTML = generateRowHTML(row1)+ '<div class="shelf-line"></div>' + generateRowHTML(row2);
+
+    } catch (error) {
+        console.error("Erreur lors du chargement :", error);
+        popularContainer.innerHTML = "<p>Erreur lors du chargement des livres.</p>";
+    }
 }
-
-loadScienceBooks();
 
 loadPopularBooks();
