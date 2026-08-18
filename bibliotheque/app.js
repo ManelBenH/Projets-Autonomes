@@ -1,12 +1,34 @@
 const popularContainer = document.getElementById("popular-books-container");
-const API_KEY = "AIzaSyC7Jq2kBk1urVVnXkIdIeqr-KSHuuoaY8c";
+const API_KEY = "AIzaSyCX-6Z3r693QWZC6nLzNYvaVJ8uX6apvI8";
 
-async function loadPopularBooks() {
+const categoryButtons = document.querySelectorAll(".genre-link");
+
+categoryButtons.forEach((button) => {
+
+    button.addEventListener("click", (event) => {
+
+        event.preventDefault();
+    
+        // ---------------------------------------------- //
+        // ---------------------------------------------- //
+        const category = button.dataset.category;
+        console.log(`La catégorie cliqué est:`, category)
+        // ---------------------------------------------- //
+        // ---------------------------------------------- //
+
+        loadPopularBooks(category)
+    });
+});
+
+async function loadPopularBooks(category = "bestseller") {
     try {
         const response = await fetch(
-            `https://www.googleapis.com/books/v1/volumes?q=bestseller&maxResults=8&key=${API_KEY}`
+            `https://www.googleapis.com/books/v1/volumes?q=subject:${category}&maxResults=40&key=${API_KEY}`
+            
         );
+        console.log(response.status);
         const data = await response.json();
+        console.log(data);
 
         popularContainer.innerHTML = "";
 
@@ -15,13 +37,22 @@ async function loadPopularBooks() {
             return;
         }
 
+        console.log("Nombre de livres reçus :", data.items.length);
+
+        const books = data.items.filter(
+            book => book.volumeInfo.description
+            );
+
+        console.log("Après filtre :", books.length);
+
+
         // On prend 6 livres au total
-        const books = data.items.slice(0, 6);
+        // const books = data.items.filter(book => book.volumeInfo.description).slice(0, 15);
 
         // On sépare en 2 groupes de 3 livres
-        const row1 = books.slice(0, 3);
-        const row2 = books.slice(3, 6);
-
+        const row1 = books.slice(0, 5);
+        const row2 = books.slice(5, 10);
+        const row3 = books.slice(10, 15);
         // Fonction pour générer le HTML d'une rangée
         function generateRowHTML(bookGroup) {
             let html = `<div class="shelf-row">`;
@@ -32,7 +63,8 @@ async function loadPopularBooks() {
                 cover = cover.replace("http://", "https://");
 
                 html += `
-                    <div class="book-card">
+                    <div class="book-card" onclick="showBook('${book.id}')">
+                        
                         <img src="${cover}" alt="${info.title}">
                     </div>
                 `;
@@ -51,7 +83,7 @@ async function loadPopularBooks() {
         }
 
         // Injection des 2 rangées dans la page
-        popularContainer.innerHTML = generateRowHTML(row1)+ '<div class="shelf-line"></div>' + generateRowHTML(row2);
+        popularContainer.innerHTML = generateRowHTML(row1) + '<div class="shelf-line"></div>' + generateRowHTML(row2) + '<div class="shelf-line"></div>' + generateRowHTML(row3)  ;
 
     } catch (error) {
         console.error("Erreur lors du chargement :", error);
@@ -59,4 +91,32 @@ async function loadPopularBooks() {
     }
 }
 
-loadPopularBooks();
+
+if (popularContainer) {
+
+    loadPopularBooks();
+
+}
+
+
+ function showBook(bookId){
+
+    window.location.href = `livre.html?id=${bookId}`;
+
+}
+
+
+// async function BookDetails(bookId) {
+   
+//     try {
+//         const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=${API_KEY}`);
+//         const book = await response.json();
+//         afficherData(data);
+//         console.log(book.volumeInfo.title);
+
+
+//     } catch (error) {
+//         console.error('Erreur :', error);
+//         alert('Erreur :', error);
+//     }
+// }

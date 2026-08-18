@@ -33,6 +33,8 @@ h1{
     font-size: 3rem;
 }
 
+
+
 p{
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
@@ -165,12 +167,19 @@ SECTION LIVRES POPULAIRES
 ========================================================================== */
 
 .demi-cercle,
-.books-container {
+.books-container,
+.btn-popular-books,
+.a2 {
     width: 85vw;             /* Même largeur pour les deux */
-    max-width: 600px;        /* Largeur maximale identique */
+    max-width: 1200px;        /* Largeur maximale identique */
     margin-left: auto;       /* Centrage horizontal */
     margin-right: auto;
     box-sizing: border-box;  /* Inclut les bordures dans le calcul de la largeur */
+}
+.popular-books{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Le demi-cercle */
@@ -178,9 +187,9 @@ SECTION LIVRES POPULAIRES
     height: 300px;
     border: 2px solid #000000;
     border-bottom: none;     /* Supprime le bas pour fusionner proprement avec le rectangle */
-    border-radius: 300px 300px 0 0;
+    border-radius: 400px 400px 0 0;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     padding-bottom: 15px;
     margin-bottom: 0;        /* Évite tout espace avec le rectangle du dessous */
@@ -209,16 +218,18 @@ SECTION LIVRES POPULAIRES
 /* Cartes des livres */
 .book-card {
     flex: 1;
-    max-width: 100px;
+    max-width: 180px;
+    
 }
 
 .book-card img {
     width: 100%;
-    height: 140px;
+    min-height: 100%;
+    aspect-ratio: 2/3;
     object-fit: cover;
     border-radius: 4px;
     display: block;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* Rectangles gris (tranches) */
@@ -244,4 +255,150 @@ SECTION LIVRES POPULAIRES
     background-color: #000000; /* Couleur du trait */
     margin: 10px 0;            /* Espacement au-dessus et en dessous */
     border-radius: 1px;
+}
+
+/* ==========================================================================
+
+SECTION genre
+
+========================================================================== */
+.titre h2{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.a2{
+    border-radius: 0;
+    border: 2px solid #000000;
+    border-top: none; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+    text-align: center;
+    padding: 20px;
+
+}
+.genre{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    gap: 20px;s
+    padding: 50px;
+    
+    
+}
+.genre-link {
+    position: relative;
+    
+    width: 100%;
+
+    max-width: 250px;
+    background-color: var(--blob-3);
+    color: black;
+    
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+
+
+}
+
+.genre-link::before{
+    content:"";
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--blob-1);
+
+
+    transform: scaleX(0);
+    transform-origin:right; /*Le remplissage démarre depuis la droite.*/
+    
+    transition: transform 0.5s ease-in-out;
+}
+
+.genre-link:hover::before{
+    transform-origin: left;
+    transform: scaleX(1);
+
+}
+.genre-link span{
+    z-index: 1;
+}
+.genre-link i{
+    position: relative;
+    display: inline-block;
+
+    width: 3px;
+    height: 20px;
+
+    background-color: #b33434; 
+
+    transition: 0.5s, width 0.5s, height 0.5s;
+    transition-delay: 0s, 0.5s, 1s;
+}
+.genre-link:hover i{
+    width: 20px;
+    height: 3px;
+    background-color: #000000;
+    transition-delay: 0s, 1s, 0.5s;
+
+}
+.genre-link i::before{
+    content:"";
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 50%;
+    height: 2px;
+
+    background-color: transparent;
+
+    rotate: 0;
+
+    transition: 1s;
+    transform-origin: right;
+}
+.genre-link:hover i::before{
+    rotate: 45deg;
+    background-color: #000000;
+    transition-delay:1.5s;
+    
+}
+
+.genre-link i::after{
+
+    content: "";
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 50%;
+    height: 2px;
+
+    background-color: transparent;
+    rotate: 0;
+
+    transition: 1s;
+    transform-origin:right;
+}
+
+.genre-link:hover i::after{
+    background-color: #000000;
+    rotate: -45deg; 
+    transition-delay:1.5s;
 }
