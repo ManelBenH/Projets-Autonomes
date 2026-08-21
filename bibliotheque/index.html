@@ -15,18 +15,23 @@
 </head>
 
 <body>
+    <div class="noise"></div>
     <header>
         <div class="bg-mesh">
             <div class="blob blob-1"></div>
             <div class="blob blob-2"></div>
             <div class="blob blob-3"></div>
         </div>
-        <a  href="" class="logo">Bibliothéque numérique</a>
+        
+        <a href="index.html" class="logo">
+            Bibliothèque numérique
+        </a>
+
         <nav>
-            <a href="">Livres</a>
-            <a href="">ebooks</a>
-            <a href="">BD</a>
-        </nav>
+            <a href="contact.html">Contact</a>
+            <div class="search-container">
+                <input id="search-input" type="text" placeholder="Rechercher ">
+            </div>    
     </header>
     <main class="container">
         
@@ -34,7 +39,7 @@
 
             <h1>Votre guide  littéraire</h1>
             <p>Découvrez des milliers de livres, ebooks et bandes dessinées. Fiches complètes et avis.</p>
-            <input type="text" placeholder="un titre, un auteur, un éditeur, un théme...">
+            <input  id="search-input-livre" type="text" placeholder="un titre, un auteur, un éditeur, un théme...">
             <button id="search-btn" class="search-btn"> Rechercher</button>
 
         </section>
@@ -43,7 +48,7 @@
 
         <section class="popular-books books">
             <div class="demi-cercle">
-                <h2>Livres populaires</h2>
+                <h2 id="titre-genre">Livres populaires</h2>
 
             </div>
 
@@ -100,8 +105,34 @@
 
 
         </section>
-
+    
     </main>
+
+    <footer>
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h3>Bibliothèque numérique</h3>
+            <p>
+                Découvrez des milliers de livres, ebooks
+                et bandes dessinées.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Accueil</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Bibliothèque numérique</p>
+    </div>
+
+</footer>
+
     <script src="app.js" defer></script>
 </body>
 </html>

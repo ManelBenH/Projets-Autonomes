@@ -120,3 +120,83 @@ if (popularContainer) {
 //         alert('Erreur :', error);
 //     }
 // }
+
+
+
+const searchBtn = document.getElementById("search-btn");
+const searchInput = document.getElementById("search-input-livre");
+
+window.addEventListener("pageshow", () => {
+    searchInput.value = "";
+});
+
+
+
+async function searchBook() {
+
+    const searchTerm = searchInput.value.trim();
+
+    
+    
+
+    if (!searchTerm) {
+        alert("Veuillez saisir un titre, un auteur ou un thème.");
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchTerm)}&maxResults=10&key=${API_KEY}`
+        );
+
+        const data = await response.json();
+
+        if (!data.items || data.items.length === 0) {
+
+            alert("Aucun livre trouvé.");
+
+            return;
+        }
+
+        const bookId = data.items[0].id;
+
+        window.location.href =
+            `livre.html?id=${bookId}`;
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Erreur lors de la recherche.");
+
+    }
+}
+
+searchBtn.addEventListener("click", searchBook);
+searchInput.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter") {
+        searchBook();
+    }
+
+});
+
+
+
+const titreGenre = document.getElementById("titre-genre");
+categoryButtons.forEach((button) => {
+
+    button.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        const category = button.dataset.category;
+
+        titreGenre.textContent =
+            button.querySelector("span").textContent;
+
+        loadPopularBooks(category);
+
+    });
+
+});
