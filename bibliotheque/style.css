@@ -12,6 +12,7 @@ a{
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
     color: var(--text-color);
+    font-size: clamp(0.8rem, 1vw, 2rem);
 }
 
 a:hover{
@@ -24,7 +25,8 @@ p{
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-style: normal;   
-    margin: 1vh 0;
+    margin: 2vh 0;
+    font-size:  clamp(0.8rem, 1vw, 2rem);
 }
 
 button{
@@ -43,7 +45,7 @@ button{
 }
 
 body{
-    min-width: 100vw;
+    
     background-color: var(--bg-color);
 }
 
@@ -98,8 +100,7 @@ header{
     justify-content: space-between;
     align-items: center;
 
-    width: 85vw;
-    max-width: 1200px;
+    max-width: 70vw;
 
     margin: 20px auto;
 }
@@ -169,7 +170,14 @@ SECTION a1
     position: relative;
 
 }
+ h1{
+    font-family: "Ephesis", cursive;
+    text-align: center;
+    font-size:  clamp(1rem, 8vw, 8rem);
+    font-weight: 200;
 
+
+ }
 
 .a1::before {
 content: "";
@@ -186,21 +194,38 @@ transform:  rotate(15deg); */
 
 input{
     width: 300px;
-    padding: 5px 15px;
+    padding: 20px 60px;
     background-color: transparent;
-    border-radius: 15px;
+    border-radius: 30px;
+    font-size: clamp(1rem, 1vw, 1rem) ;
     
 }
 .deco{
 position: absolute;
-transition: transform 0.4s ease;
-}
-.deco:hover{
-    transform: translateX(1px) rotate(10deg);
+pointer-events: none;
 }
 
+
 .d1{
-   transform: translateX(900px) rotate(10deg) ;
+    transform:  translateX(-600px) rotate(-30deg);
+    transition: transform 0.4s ease;
+}
+.d1:hover{
+    transform: translateX(-590px) rotate(-40deg) ;
+}
+.d2{
+    transition: transform 0.4s ease;
+    transform:  translateX(800px) translateY(-300PX) rotate(20deg) ;
+}
+.d2:hover{
+    transform:  translateX(780px) translateY(-330PX) rotate(26deg)  ;
+}
+.d3{
+    transform: translateX(500px) translateY(300px);
+    transition: transform 0.4s ease;
+}
+.d3:hover{
+    transform: translateX(550px) translateY(350px); 
 }
 
 /* ==========================================================================
@@ -213,7 +238,7 @@ SECTION LIVRES POPULAIRES
 .books-container,
 .btn-popular-books,
 .a2 {
-    width: 85vw;             /* Même largeur pour les deux */
+    width: min(1200px, 85vw);            /* Même largeur pour les deux */
     max-width: 1200px;        /* Largeur maximale identique */
     margin-left: auto;       /* Centrage horizontal */
     margin-right: auto;
@@ -611,13 +636,13 @@ PAGE CONTACT
 }
 
 /* Titre */
-h1 {
+.titre-contact h1 {
     font-family: "Ephesis", cursive;
     text-align: center;
     color: #474544;
-    font-size: 8rem;
+    font-size: clamp(6rem, 16vw, 16rem);
     font-weight: 100;
-   
+    
    
 }
 
