@@ -29,7 +29,7 @@ async function loadPopularBooks(category = "bestseller") {
         console.log(response.status);
         const data = await response.json();
         console.log(data);
-
+        
         popularContainer.innerHTML = "";
 
         if (!data.items) {
@@ -106,38 +106,23 @@ if (popularContainer) {
 }
 
 
-// async function BookDetails(bookId) {
-   
-//     try {
-//         const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=${API_KEY}`);
-//         const book = await response.json();
-//         afficherData(data);
-//         console.log(book.volumeInfo.title);
-
-
-//     } catch (error) {
-//         console.error('Erreur :', error);
-//         alert('Erreur :', error);
-//     }
-// }
-
 
 
 const searchBtn = document.getElementById("search-btn");
 const searchInput = document.getElementById("search-input-livre");
+const headerSearchInput = document.getElementById("search-input");
+
 
 window.addEventListener("pageshow", () => {
     searchInput.value = "";
+    headerSearchInput.value = "";
 });
 
 
 
-async function searchBook() {
+async function searchBook(inputElement = searchInput) {
 
-    const searchTerm = searchInput.value.trim();
-
-    
-    
+    const searchTerm = inputElement.value.trim();
 
     if (!searchTerm) {
         alert("Veuillez saisir un titre, un auteur ou un thème.");
@@ -145,7 +130,6 @@ async function searchBook() {
     }
 
     try {
-
         const response = await fetch(
             `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchTerm)}&maxResults=10&key=${API_KEY}`
         );
@@ -153,24 +137,29 @@ async function searchBook() {
         const data = await response.json();
 
         if (!data.items || data.items.length === 0) {
-
             alert("Aucun livre trouvé.");
-
             return;
         }
 
         const bookId = data.items[0].id;
-
-        window.location.href =
-            `livre.html?id=${bookId}`;
+        window.location.href = `livre.html?id=${bookId}`;
 
     } catch (error) {
-
         console.error(error);
         alert("Erreur lors de la recherche.");
-
     }
 }
+
+// Bouton du milieu : uniquement au clic
+searchBtn.addEventListener("click", () => searchBook());
+
+// Champ du haut : uniquement avec Entrée
+headerSearchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        searchBook(headerSearchInput);
+    }
+});
+
 
 searchBtn.addEventListener("click", searchBook);
 searchInput.addEventListener("keydown", (event) => {
@@ -193,7 +182,7 @@ categoryButtons.forEach((button) => {
         const category = button.dataset.category;
 
         titreGenre.textContent =
-            button.querySelector("span").textContent;
+            `• ${button.querySelector("span").textContent} •`;
 
         loadPopularBooks(category);
 

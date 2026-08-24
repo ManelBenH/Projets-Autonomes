@@ -16,13 +16,7 @@
 
 <body>
     <div class="noise"></div>
-    <header>
-        <div class="bg-mesh">
-            <div class="blob blob-1"></div>
-            <div class="blob blob-2"></div>
-            <div class="blob blob-3"></div>
-        </div>
-        
+    <header>  
         <a href="index.html" class="logo">
             Bibliothèque numérique
         </a>
@@ -36,10 +30,15 @@
     <main class="container">
         
         <section class="a1">
+            <div class="deco">
+                <img class="d1" src="/Projets-Autonomes/bibliotheque/images/1.png">
+                <!-- <imgb class="d2" src="/Projets-Autonomes/bibliotheque/images/2.png" alt="">
+                <img class="d3" src="/Projets-Autonomes/bibliotheque/images/3.png" alt=""> -->
+            </div>
 
             <h1>Votre guide  littéraire</h1>
             <p>Découvrez des milliers de livres, ebooks et bandes dessinées. Fiches complètes et avis.</p>
-            <input  id="search-input-livre" type="text" placeholder="un titre, un auteur, un éditeur, un théme...">
+            <input  id="search-input-livre" class="search-input-livre" type="text" placeholder="un titre, un auteur, un éditeur, un théme...">
             <button id="search-btn" class="search-btn"> Rechercher</button>
 
         </section>
@@ -48,7 +47,7 @@
 
         <section class="popular-books books">
             <div class="demi-cercle">
-                <h2 id="titre-genre">Livres populaires</h2>
+                <h2 id="titre-genre">&bull; Livres populaires &bull;</h2>
 
             </div>
 
@@ -63,7 +62,7 @@
 
         <section class="a2">
             <div class="titre">
-                <h2>Parcourir par genre</h2>
+                <h2>&bull; Parcourir par genre &bull;</h2>
             </div>
             <div class="genre">
                 <a href="" class="genre-link" data-category="art">
